@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TodoApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:colorPrimaryDark">@color/blue_color_light</item>
+    </style>
+    <style name="splash_screen_bg">
+        <item name="android:background">@drawable/splash_screen_light</item>
+    </style>
+    <style name="home_bg">
+        <item name="android:background">@color/light_green</item>
+    </style>
+
+    <style name="Theme.TodoApp" parent="Base.Theme.TodoApp" />
+</resources>
