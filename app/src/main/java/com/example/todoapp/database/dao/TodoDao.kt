@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.todoapp.database.model.TodosData
+import java.util.Date
 
 
 @Dao
@@ -20,5 +21,5 @@ interface TodoDao {
     fun getAllTasks():List<TodosData>
 
     @Query("select * from todos where dateTime = :dateTime")
-    fun getTasksByDate(dateTime :Long):List<TodosData>
+    fun getTasksByDate(dateTime : Date):List<TodosData>
 }

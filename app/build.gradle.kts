@@ -54,4 +54,9 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
+
+    //Groovy
+    //KSP (kotlin Scripting Language) kotlin
+    // The view calendar library
+    implementation("com.kizitonwose.calendar:view:2.3.0")
 }

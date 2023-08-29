@@ -2,6 +2,7 @@ package com.example.todoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.todoapp.ui.tabs.AddTodoBottomSheetFragment
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var addTodoButton:FloatingActionButton
     var todoListFragment : TodoListFragment = TodoListFragment()
     var todoSettingsFragment :SettingsFragment = SettingsFragment()
+    lateinit var txtToolobar:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun initViews(){
         bottomNavigationView=findViewById(R.id.bottom_navigation_view)
+        txtToolobar=findViewById(R.id.txt_toolbar)
         bottomNavigationView.setOnItemSelectedListener {
 //            equal switch in java
             when(it.itemId){
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_settings->{
                     pushFragment(todoSettingsFragment)
+                    txtToolobar.text="Settings"
             }
             }
           /*  if(it.itemId == R.id.navigation_list){

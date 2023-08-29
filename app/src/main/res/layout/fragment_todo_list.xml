@@ -12,6 +12,16 @@
         android:layout_height="50dp"
         android:background="@color/blue_color_light"
         app:layout_constraintTop_toTopOf="parent" />
+    <!--        cv == calender view -->
+    <com.kizitonwose.calendar.view.WeekCalendarView
+        android:id="@+id/calender_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cv_dayViewResource="@layout/item_day_container"
+        app:cv_daySize="freeForm"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="@id/toolbar_bg"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_task"
@@ -20,7 +30,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         tools:listitem="@layout/item_task"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_bg"
+        app:layout_constraintTop_toBottomOf="@id/calender_view"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

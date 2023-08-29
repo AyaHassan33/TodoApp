@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import com.example.todoapp.clearTime
 import com.example.todoapp.database.TodoDatabase
 import com.example.todoapp.database.model.TodosData
 import com.example.todoapp.databinding.FragmentAddTodoBottomSheetBinding
@@ -50,12 +51,12 @@ class AddTodoBottomSheetFragment : BottomSheetDialogFragment() {
             var dialog = DatePickerDialog(requireContext())
                 dialog.setOnDateSetListener{ view, year, month, dayOfMonth ->
                     viewBinding.selectDateValue.text ="$year / ${month +1} / $dayOfMonth"
-                    calendar.set(year,month,dayOfMonth)
+                  //  calendar.set(year,month,dayOfMonth)
+                    calendar.set(Calendar.YEAR,year)
+                    calendar.set(Calendar.MONTH,month)
+                    calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                     // to ignore time
-                    calendar.set(Calendar.HOUR_OF_DAY,0)
-                    calendar.set(Calendar.MINUTE,0)
-                    calendar.set(Calendar.SECOND,0)
-                    calendar.set(Calendar.MILLISECOND,0)
+                  calendar.clearTime()
 
             }
             dialog.show()
@@ -88,6 +89,7 @@ class AddTodoBottomSheetFragment : BottomSheetDialogFragment() {
         if(!validate()){
             return
         }
+        calendar.clearTime()
         val task =TodosData(
             title = viewBinding.titleEditText.text.toString(),
             description = viewBinding.descEditText.text.toString(),
