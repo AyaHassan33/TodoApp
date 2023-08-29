@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.navigation_list->{
                     pushFragment(todoListFragment)
+                    txtToolobar.text="To Do List"
                 }
                 R.id.navigation_settings->{
                     pushFragment(todoSettingsFragment)
