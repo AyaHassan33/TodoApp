@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.navigation_list->{
                     pushFragment(todoListFragment)
-                    txtToolobar.text="To Do List"
+                    txtToolobar.text= getString(R.string.to_do_list)
                 }
                 R.id.navigation_settings->{
                     pushFragment(todoSettingsFragment)
-                    txtToolobar.text="Settings"
+                    txtToolobar.text= getString(R.string.settings)
             }
             }
           /*  if(it.itemId == R.id.navigation_list){

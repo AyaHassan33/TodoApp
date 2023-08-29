@@ -11,4 +11,36 @@
     <style name="home_bg">
         <item name="android:background">@color/dark_black</item>
     </style>
+    <style name="bottom_navigation_view_bg" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="android:backgroundTint">@color/bg_btn_navigation</item>
+    </style>
+    <style name="floating_bg">
+        <item name="android:backgroundTint">@color/blue_color_dark</item>
+    </style>
+    <style name="bottom_sheet_bg">
+        <item name="android:background">@color/bg_btn_navigation</item>
+
+    </style>
+    <style name="txt_time">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableStart">@drawable/ic_timer_night</item>
+    </style>
+    <style name="card_day_bg">
+        <item name="android:background">@color/bg_btn_navigation</item>
+    </style>
+    <style name="txt_day_style">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="spinner_bg">
+        <item name="android:background">@drawable/spinner_bg_night</item>
+    </style>
+    <style name="toolbar_bg">
+        <item name="android:background">@color/blue_color_dark</item>
+    </style>
+    <style name="toolbar_title_color">
+        <item name="android:textColor">@color/dark_black</item>
+    </style>
+    <style name="edit_task_bg_tint">
+        <item name="android:backgroundTint">@color/bg_btn_navigation</item>
+    </style>
 </resources>

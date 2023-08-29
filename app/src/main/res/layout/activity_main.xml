@@ -12,7 +12,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5D9CEC">
+            style="@style/toolbar_bg">
             <TextView
                 android:id="@+id/txt_toolbar"
                 android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
                 android:fontFamily="@font/poppins_bold"
                 android:textSize="22sp"
                 android:padding="8dp"
-                android:textColor="@color/white"/>
+                style="@style/toolbar_title_color"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <include
@@ -40,8 +40,7 @@
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.BottomAppBar"
-        android:backgroundTint="@color/white"
+        style="@style/bottom_navigation_view_bg"
         app:fabCradleMargin="8dp"
         app:fabCradleRoundedCornerRadius="16dp"
         app:fabCradleVerticalOffset="16dp"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TodoApp</string>
+    <string name="app_toolbar_name">To Do List</string>
+    <string name="add_task">اضافه مهام جديده</string>
+    <string name="language">اللغه</string>
+    <string name="mode">مود</string>
+    <string name="settings">الاعدادات</string>
+    <string name="to_do_list">عمل فائمه من المهام </string>
+    <string name="edit_task">Edit Task</string>
+    <string name="save_change">Save Change</string>
+    <string-array name="languages">
+        <item>اختار اللغة</item>
+        <item>اللغه الانجليزيه</item>
+        <item>اللغه العربيه</item>
+    </string-array>
+    <string-array name="mode">
+        <item>حدد الوضع مضئ / مظلم</item>
+        <item>وضع المضئ</item>
+        <item>وضع المظلم</item>
+    </string-array>
+</resources>

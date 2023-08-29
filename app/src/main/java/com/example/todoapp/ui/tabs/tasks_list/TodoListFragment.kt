@@ -1,6 +1,7 @@
 package com.example.todoapp.ui.tabs.tasks_list
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -10,10 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoapp.EditTaskActivity
+import com.example.todoapp.OnTaskClickListener
 import com.example.todoapp.R
 import com.example.todoapp.adapters.DayViewHolder
 import com.example.todoapp.clearTime
 import com.example.todoapp.database.TodoDatabase
+import com.example.todoapp.database.model.TodosData
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.WeekDay
@@ -137,6 +141,18 @@ class TodoListFragment : Fragment() {
     private fun initViews(view:View){
         recyclerView= view.findViewById(R.id.recycler_view_task)
         adapter = TasksAdapter(null)
+        adapter.onTaskClickListener=object :OnTaskClickListener{
+            override fun onTaskClick(task: TodosData, position: Int) {
+                var intent =Intent(activity,EditTaskActivity::class.java)
+                intent.putExtra("title",task.title)
+                intent.putExtra("desc",task.description)
+                intent.putExtra("id",task.id)
+                intent.putExtra("isDone",task.isDone)
+                intent.putExtra("time",task.dateTime.toString())
+                startActivity(intent)
+            }
+
+        }
         recyclerView.adapter= adapter
     }
 
