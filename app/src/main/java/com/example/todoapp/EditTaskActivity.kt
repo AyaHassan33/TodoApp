@@ -15,10 +15,10 @@ class EditTaskActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.editTaskTitle.setText(intent.getStringExtra("title"))
+        /*binding.editTaskTitle.setText(intent.getStringExtra("title"))
         binding.descEditText.setText(intent.getStringExtra("desc"))
         binding.selectDateValueEdit.text= intent.getStringExtra("time")
-
+*/
 
 
     }
