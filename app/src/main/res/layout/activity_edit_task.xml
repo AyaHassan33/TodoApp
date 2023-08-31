@@ -20,9 +20,10 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="17dp"
             style="@style/toolbar_bg">
             <ImageView
+                android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="13dp"
@@ -42,7 +43,8 @@
     <View
         android:id="@+id/toolbar_edit_bg"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.13"
         style="@style/toolbar_bg"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 

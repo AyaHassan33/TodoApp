@@ -1,11 +1,14 @@
 package com.example.todoapp.ui.tabs.tasks_list
 
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.todoapp.OnTaskClickListener
+import com.example.todoapp.R
 import com.example.todoapp.database.model.TodosData
 import com.example.todoapp.databinding.ItemTaskBinding
 
@@ -34,9 +37,25 @@ class TasksAdapter(var tasks:List<TodosData>?=null) :Adapter<TasksAdapter.TaskVi
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(tasks!![position])
-        holder.itemBinding.title.setOnClickListener {
-            onTaskClickListener?.onTaskClick(tasks!![position],position)
+        if(onTaskClickListener!=null){
+          /*  holder.itemBinding.card.setOnLongClickListener(View.OnLongClickListener {
+
+                return@OnLongClickListener true
+            })*/
+            // lamda expression
+            holder.itemBinding.card.setOnLongClickListener {
+                onTaskClickListener?.onTaskClick(tasks!![position],position)
+                return@setOnLongClickListener true
+            }
+
         }
+        if(tasks!![position].isDone){
+            holder.itemBinding.btnDone.setBackgroundColor(Color.GREEN)
+            holder.itemBinding.title.setTextColor(Color.GREEN)
+           // holder.itemBinding.btnDone.setBackgroundResource(R.drawable.)
+            holder.itemBinding.btnDone.setImageResource(0)
+        }
+
 
     }
 

@@ -9,4 +9,5 @@
     <color name="hint_text_color">#A9A9A9</color>
     <color name="bg_btn_navigation">#141922</color>
     <color name="txt_day_color">#363636</color>
+    <color name="green_isDone_btn">#61E757</color>
 </resources>

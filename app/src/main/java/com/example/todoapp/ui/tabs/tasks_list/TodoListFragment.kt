@@ -15,6 +15,7 @@ import com.example.todoapp.EditTaskActivity
 import com.example.todoapp.OnTaskClickListener
 import com.example.todoapp.R
 import com.example.todoapp.adapters.DayViewHolder
+import com.example.todoapp.base.BaseFragment
 import com.example.todoapp.clearTime
 import com.example.todoapp.database.TodoDatabase
 import com.example.todoapp.database.model.TodosData
@@ -34,7 +35,7 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class TodoListFragment : Fragment() {
+class TodoListFragment : BaseFragment() {
 
     lateinit var recyclerView :RecyclerView
     lateinit var adapter :TasksAdapter
@@ -143,17 +144,43 @@ class TodoListFragment : Fragment() {
         adapter = TasksAdapter(null)
         adapter.onTaskClickListener=object :OnTaskClickListener{
             override fun onTaskClick(task: TodosData, position: Int) {
-                var intent =Intent(activity,EditTaskActivity::class.java)
-                intent.putExtra("title",task.title)
-                intent.putExtra("desc",task.description)
-                intent.putExtra("id",task.id)
-                intent.putExtra("isDone",task.isDone)
-                intent.putExtra("time",task.dateTime.toString())
-                startActivity(intent)
+                showMessage("What do you want ? ",
+                    "Update",
+                    { _, dialog->updateTodoTask(task) },
+                    "Make Done !",
+                    {_,dialog->makeDone(task)}
+                    )
+
             }
 
         }
         recyclerView.adapter= adapter
+    }
+
+    private fun makeDone(task: TodosData) {
+        task.isDone=true
+        TodoDatabase.getInstance(requireActivity()).todoDao()
+            .updateTodo(task)
+        reFreshRecycleView()
+
+    }
+
+    private fun reFreshRecycleView() {
+        TODO("Not yet implemented")
+    }
+
+    private fun updateTodoTask(task: TodosData) {
+        /*var intent =Intent(activity,EditTaskActivity::class.java)
+        intent.putExtra("title",task.title)
+        intent.putExtra("desc",task.description)
+        intent.putExtra("id",task.id)
+        intent.putExtra("isDone",task.isDone)
+        intent.putExtra("time",task.dateTime.toString())
+        */
+        var intent =Intent(requireContext(),EditTaskActivity::class.java)
+        intent.putExtra("Task",task)
+        startActivity(intent)
+
     }
 
     override fun onStart() {

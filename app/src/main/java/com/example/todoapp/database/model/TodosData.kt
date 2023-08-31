@@ -3,6 +3,7 @@ package com.example.todoapp.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.util.Date
 
 @Entity(tableName = "Todos")  //--> change table name in database
@@ -19,4 +20,4 @@ data class TodosData(
     @ColumnInfo
     var isDone:Boolean=false
 
-)
+):Serializable
