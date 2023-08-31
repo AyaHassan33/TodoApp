@@ -62,8 +62,6 @@ class TasksAdapter(var tasks:MutableList<TodosData>?=null) :Adapter<TasksAdapter
                     onItemDeleteClickListener?.onItemDeleteClick(tasks!![position],position)
                 }
         }
-
-
     }
 
     fun updateTasks(tasks:MutableList<TodosData>){
@@ -77,7 +75,6 @@ class TasksAdapter(var tasks:MutableList<TodosData>?=null) :Adapter<TasksAdapter
         notifyItemRemoved(position!!)
 
     }
-
 
     var onItemDeleteClickListener:OnItemDeleteClickListener?=null
    interface OnItemDeleteClickListener{

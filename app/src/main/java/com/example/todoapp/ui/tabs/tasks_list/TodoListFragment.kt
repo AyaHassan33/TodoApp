@@ -189,7 +189,6 @@ class TodoListFragment : BaseFragment() {
 
     private fun reFreshRecycleView() {
         loadTasks()
-
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
