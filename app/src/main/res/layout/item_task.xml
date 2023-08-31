@@ -1,95 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zerobranch.layout.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="10dp"
-    style="@style/bottom_sheet_bg"
-    app:cardElevation="15dp"
-    app:cardCornerRadius="15dp"
-    app:contentPadding="2dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:draggedItem="@id/drag_item"
+    app:leftItem="@id/delete_view"
+    app:swipeDirection="right">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/delete_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="15dp"
+        android:elevation="20dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_rounded_delete"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="48dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete"
+                android:textColor="@color/white"
+                android:textSize="17sp"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/card"
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/drag_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_margin="10dp"
+        style="@style/bottom_sheet_bg"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="15dp"
+        app:contentPadding="2dp"
+        >
 
-        <View
-            android:id="@+id/vertical_line"
-            android:layout_width="4dp"
-            android:layout_height="100dp"
-            android:layout_margin="7dp"
-            android:background="@color/blue_color_light"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Title"
-            android:textColor="@color/blue_color_light"
-            android:textSize="22sp"
-            android:padding="4dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_bold"
-           app:layout_constraintStart_toEndOf="@id/vertical_line"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_done"
+            android:padding="10dp">
 
-            />
-       <!-- <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="Title"
-            android:textColor="@color/blue_color_light"
-            android:textSize="14sp"
-            android:padding="4dp"
-            android:layout_marginTop="14dp"
-            android:lines="2"
-            android:maxLines="2"
-            android:minLines="2"
-            android:fontFamily="@font/poppins_bold"
-            app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintEnd_toEndOf="@id/title"
-            />-->
-        <TextView
-            android:id="@+id/todo_time"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/txt_time"
-            tools:text="10 : 30 pm"
-            android:textSize="13sp"
-            android:padding="8dp"
-            android:drawablePadding="7dp"
-            app:layout_constraintEnd_toEndOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/title"
-             />
-
-        <ImageButton
-            android:id="@+id/btn_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="32dp"
-            android:background="@drawable/btn_done_bg"
-            android:src="@drawable/ic_check_done"
-            app:layout_constraintStart_toEndOf="@id/title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/title"
-            app:layout_constraintBottom_toBottomOf="@id/todo_time"
-            />
+            <View
+                android:id="@+id/vertical_line"
+                android:layout_width="4dp"
+                android:layout_height="100dp"
+                android:layout_margin="7dp"
+                android:background="@color/blue_color_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Title"
+                android:textColor="@color/blue_color_light"
+                android:textSize="22sp"
+                android:padding="4dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintStart_toEndOf="@id/vertical_line"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_done"
 
-</androidx.cardview.widget.CardView>
+                />
+            <!-- <TextView
+                 android:id="@+id/description"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 tools:text="Title"
+                 android:textColor="@color/blue_color_light"
+                 android:textSize="14sp"
+                 android:padding="4dp"
+                 android:layout_marginTop="14dp"
+                 android:lines="2"
+                 android:maxLines="2"
+                 android:minLines="2"
+                 android:fontFamily="@font/poppins_bold"
+                 app:layout_constraintStart_toStartOf="@id/title"
+                 app:layout_constraintTop_toBottomOf="@id/title"
+                 app:layout_constraintEnd_toEndOf="@id/title"
+                 />-->
+            <TextView
+                android:id="@+id/todo_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/txt_time"
+                tools:text="10 : 30 pm"
+                android:textSize="13sp"
+                android:padding="8dp"
+                android:drawablePadding="7dp"
+                app:layout_constraintEnd_toEndOf="@id/title"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="32dp"
+                android:background="@drawable/btn_done_bg"
+                android:src="@drawable/ic_check_done"
+                app:layout_constraintStart_toEndOf="@id/title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/title"
+                app:layout_constraintBottom_toBottomOf="@id/todo_time"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</com.zerobranch.layout.SwipeLayout>
+

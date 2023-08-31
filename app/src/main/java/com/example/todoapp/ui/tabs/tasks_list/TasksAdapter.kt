@@ -12,7 +12,7 @@ import com.example.todoapp.R
 import com.example.todoapp.database.model.TodosData
 import com.example.todoapp.databinding.ItemTaskBinding
 
-class TasksAdapter(var tasks:List<TodosData>?=null) :Adapter<TasksAdapter.TaskViewHolder>(){
+class TasksAdapter(var tasks:MutableList<TodosData>?=null) :Adapter<TasksAdapter.TaskViewHolder>(){
 
     var onTaskClickListener:OnTaskClickListener?=null
 
@@ -55,13 +55,33 @@ class TasksAdapter(var tasks:List<TodosData>?=null) :Adapter<TasksAdapter.TaskVi
            // holder.itemBinding.btnDone.setBackgroundResource(R.drawable.)
             holder.itemBinding.btnDone.setImageResource(0)
         }
+        if (onItemDeleteClickListener!=null){
+            holder.itemBinding.deleteView
+                .setOnClickListener {
+                    holder.itemBinding.swipeLayout.close(true)
+                    onItemDeleteClickListener?.onItemDeleteClick(tasks!![position],position)
+                }
+        }
 
 
     }
 
-    fun updateTasks(tasks:List<TodosData>){
+    fun updateTasks(tasks:MutableList<TodosData>){
         this.tasks=tasks
         notifyDataSetChanged()
+    }
+
+    fun taskDeleted(task: TodosData) {
+        val position=tasks?.indexOf(task)
+        tasks?.remove(task)
+        notifyItemRemoved(position!!)
+
+    }
+
+
+    var onItemDeleteClickListener:OnItemDeleteClickListener?=null
+   interface OnItemDeleteClickListener{
+        fun onItemDeleteClick(task:TodosData,position: Int)
     }
 
 

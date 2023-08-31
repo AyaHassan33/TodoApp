@@ -143,6 +143,7 @@ class TodoListFragment : BaseFragment() {
         recyclerView= view.findViewById(R.id.recycler_view_task)
         adapter = TasksAdapter(null)
         adapter.onTaskClickListener=object :OnTaskClickListener{
+            @RequiresApi(Build.VERSION_CODES.N)
             override fun onTaskClick(task: TodosData, position: Int) {
                 showMessage("What do you want ? ",
                     "Update",
@@ -154,8 +155,29 @@ class TodoListFragment : BaseFragment() {
             }
 
         }
+        adapter.onItemDeleteClickListener=object :TasksAdapter.OnItemDeleteClickListener{
+            override fun onItemDeleteClick(task: TodosData, position: Int) {
+                deleteTaskFromDatabase(task)
+                adapter.taskDeleted(task)
+            }
+
+        }
         recyclerView.adapter= adapter
     }
+
+    private fun deleteTaskFromDatabase(task: TodosData) {
+        showMessage("are you want to delete this task", postActionTitle = "yes",
+            postAction = {dialog,_ ->dialog.dismiss()
+                TodoDatabase.getInstance(requireContext())
+                    .todoDao()
+                    .deleteTodo(task)}, negActionTitle = "No",
+            negAction = {dialog,_ ->dialog.dismiss()
+                reFreshRecycleView()}
+        )
+
+
+    }
+
 
     private fun makeDone(task: TodosData) {
         task.isDone=true
@@ -166,9 +188,11 @@ class TodoListFragment : BaseFragment() {
     }
 
     private fun reFreshRecycleView() {
-        TODO("Not yet implemented")
+        loadTasks()
+
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun updateTodoTask(task: TodosData) {
         /*var intent =Intent(activity,EditTaskActivity::class.java)
         intent.putExtra("title",task.title)
@@ -192,7 +216,7 @@ class TodoListFragment : BaseFragment() {
             val tasks =  TodoDatabase.getInstance(it)
                 .todoDao()
                 .getAllTasks()
-            adapter.updateTasks(tasks)
+            adapter.updateTasks(tasks.toMutableList())
         }
     }
 
@@ -208,7 +232,7 @@ class TodoListFragment : BaseFragment() {
                 .todoDao()
                 .getAllTasks()
 
-        adapter.updateTasks(todoList)
+        adapter.updateTasks(todoList.toMutableList())
 
     }
 

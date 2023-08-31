@@ -8,6 +8,7 @@
     <string name="to_do_list">To Do List</string>
     <string name="edit_task">Edit Task</string>
     <string name="save_change">Save Change</string>
+    <string name="delete">Delete</string>
     <string-array name="languages">
         <item>Select Language</item>
         <item>English</item>

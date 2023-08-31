@@ -59,4 +59,7 @@ dependencies {
     //KSP (kotlin Scripting Language) kotlin
     // The view calendar library
     implementation("com.kizitonwose.calendar:view:2.3.0")
+    //swipeLayout
+    implementation("com.github.zerobranch:SwipeLayout:1.3.1")
+
 }
