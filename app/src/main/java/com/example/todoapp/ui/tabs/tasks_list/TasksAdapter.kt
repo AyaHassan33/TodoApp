@@ -68,7 +68,6 @@ class TasksAdapter(var tasks:MutableList<TodosData>?=null) :Adapter<TasksAdapter
         this.tasks=tasks
         notifyDataSetChanged()
     }
-
     fun taskDeleted(task: TodosData) {
         val position=tasks?.indexOf(task)
         tasks?.remove(task)

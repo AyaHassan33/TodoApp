@@ -218,7 +218,6 @@ class TodoListFragment : BaseFragment() {
             adapter.updateTasks(tasks.toMutableList())
         }
     }
-
     fun getTodoByDate(selectedDate: Date?){
        val todoList= if (selectedDate != null)
         TodoDatabase
