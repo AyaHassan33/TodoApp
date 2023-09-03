@@ -118,12 +118,13 @@
                 app:layout_constraintTop_toBottomOf="@id/title"
                 />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="32dp"
+                android:adjustViewBounds="true"
                 android:background="@drawable/btn_done_bg"
                 android:src="@drawable/ic_check_done"
                 app:layout_constraintStart_toEndOf="@id/title"
@@ -131,7 +132,6 @@
                 app:layout_constraintTop_toTopOf="@id/title"
                 app:layout_constraintBottom_toBottomOf="@id/todo_time"
                 />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

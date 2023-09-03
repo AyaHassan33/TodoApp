@@ -2,13 +2,14 @@ package com.example.todoapp.ui.tabs.tasks_list
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
+
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.EditTaskActivity
@@ -19,12 +20,9 @@ import com.example.todoapp.base.BaseFragment
 import com.example.todoapp.clearTime
 import com.example.todoapp.database.TodoDatabase
 import com.example.todoapp.database.model.TodosData
-import com.kizitonwose.calendar.core.CalendarDay
-import com.kizitonwose.calendar.core.DayPosition
+
 import com.kizitonwose.calendar.core.WeekDay
-import com.kizitonwose.calendar.core.WeekDayPosition
 import com.kizitonwose.calendar.core.atStartOfMonth
-import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
 import com.kizitonwose.calendar.view.WeekCalendarView
 import com.kizitonwose.calendar.view.WeekDayBinder
@@ -42,6 +40,7 @@ class TodoListFragment : BaseFragment() {
     lateinit var calenderView:WeekCalendarView
     var selectedDate:LocalDate?=null
     lateinit var calendar: Calendar
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -149,11 +148,22 @@ class TodoListFragment : BaseFragment() {
                     "Update",
                     { _, dialog->updateTodoTask(task) },
                     "Make Done !",
-                    {_,dialog->makeDone(task)}
+                    {_,dialog->makeDone(task)
+                    task.isDone=false}
                     )
 
             }
 
+            override fun onButtonDoneClick(task: TodosData, position: Int) {
+                makeDone(task)
+            }
+
+
+            /*
+             override fun onButtonDoneClick(task: TodosData) {
+                makeDone(task)
+             }
+ */
         }
         adapter.onItemDeleteClickListener=object :TasksAdapter.OnItemDeleteClickListener{
             override fun onItemDeleteClick(task: TodosData, position: Int) {

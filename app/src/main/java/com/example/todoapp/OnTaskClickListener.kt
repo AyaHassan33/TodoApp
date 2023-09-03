@@ -4,4 +4,5 @@ import com.example.todoapp.database.model.TodosData
 
 interface OnTaskClickListener {
     fun onTaskClick(task:TodosData,position:Int)
+    fun onButtonDoneClick(task:TodosData,position: Int)
 }
